@@ -1,15 +1,13 @@
 from typing import List
 from chromadb.config import Settings
 from sentence_transformers import SentenceTransformer
-from bidi.algorithm import get_display
-import arabic_reshaper
 import re
 import uuid
 import chromadb
 
 
 
-model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
+model = SentenceTransformer("all-MiniLM-L6-v2")
 
 client = chromadb.PersistentClient(path="./chroma_db")
 collection = client.get_or_create_collection(name="documents")
