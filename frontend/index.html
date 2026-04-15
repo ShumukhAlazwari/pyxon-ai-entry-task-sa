@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Document Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-blur bg-blur-1"></div>
+  <div class="bg-blur bg-blur-2"></div>
+
+  <div class="page">
+    <header class="hero">
+      <div class="badge">AI Powered Document Parser</div>
+      <h1>AI Document Analyzer</h1>
+      <p class="subtitle">
+        ارفع مستندك، حلّله، ثم اسأل عنه باستخدام تجربة ذكية تدعم اللغة العربية
+      </p>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <div class="card-header">
+          <h2>رفع المستند</h2>
+          <p>يدعم PDF / DOCX / TXT</p>
+        </div>
+
+        <label class="upload-area" for="fileInput">
+          <input type="file" id="fileInput" accept=".pdf,.docx,.txt" />
+          <div class="upload-icon">↑</div>
+          <div class="upload-title">اختر ملفًا من جهازك</div>
+          <div class="upload-subtitle">وسيتم تحليله مباشرة</div>
+        </label>
+
+        <button id="uploadBtn" class="btn primary-btn">رفع ومعالجة</button>
+        <p id="uploadStatus" class="status-text"></p>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>اسأل عن المستند</h2>
+          <p>اطرح سؤالاً ليتم استرجاع أفضل جزء مناسب</p>
+        </div>
+
+        <div class="input-wrap">
+          <input
+            type="text"
+            id="questionInput"
+            placeholder="مثال: كم مدة العقد؟"
+          />
+        </div>
+
+        <button id="askBtn" class="btn secondary-btn">اسأل الآن</button>
+      </section>
+
+      <section class="card answer-card full-width">
+        <div class="card-header">
+          <h2>الإجابة</h2>
+          <p>النتيجة المسترجعة من المستند ستظهر هنا</p>
+        </div>
+
+        <div id="answerBox" class="answer-box">الإجابة ستظهر هنا...</div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
