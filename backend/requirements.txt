@@ -9,3 +9,4 @@ chromadb
 easyocr
 Pillow
 numpy
+PyMuPDF
