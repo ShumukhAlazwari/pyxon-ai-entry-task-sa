@@ -6,9 +6,29 @@ Email: shumoukh88@gmail.com
 
 ---
 
-## 🚀 Demo
-Live demo:
-(Add your link here later)
+## 🚀 Live Demo
+
+**Frontend (Vercel):**
+https://pyxon-ai-entry-task-sa-git-main-shumukhalazwaris-projects.vercel.app
+
+**Backend API (Railway):**
+https://pyxon-ai-entry-task-sa-production.up.railway.app
+
+---
+
+## 📝 Notes
+
+* The frontend is deployed on Vercel and connected to the FastAPI backend hosted on Railway.
+* The system supports uploading PDF, DOCX, and TXT files, then asking questions about their content.
+
+---
+
+## 💡 Features
+
+* Document upload and processing
+* Chunking and vector storage
+* Semantic search (RAG)
+* Question answering over documents
 
 ---
 
