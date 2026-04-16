@@ -1,5 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
-
+const API_BASE = "https://pyxon-ai-entry-task-sa-production.up.railway.app";
 const fileInput = document.getElementById("fileInput");
 const uploadBtn = document.getElementById("uploadBtn");
 const uploadStatus = document.getElementById("uploadStatus");
