@@ -3,13 +3,13 @@ import re
 import docx
 import pdfplumber
 import fitz
-#import easyocr
+import easyocr
 import numpy as np
 from PIL import Image
 from pypdf import PdfReader
 
 
-#reader = easyocr.Reader(['ar', 'en'], gpu=False)
+reader = easyocr.Reader(['ar', 'en'], gpu=False)
 
 
 def looks_like_broken_arabic(text: str) -> bool:
@@ -67,8 +67,23 @@ def extract_page_image_for_ocr(pdf_path: str, page_index: int):
 
 
 def extract_text_with_ocr(pdf_path: str) -> str:
-    # OCR disabled in deployment (Render Free plan memory limit)
-    return ""
+    ocr_text = ""
+    try:
+        doc = fitz.open(pdf_path)
+        total_pages = len(doc)
+        doc.close()
+
+        for page_index in range(total_pages):
+            img = extract_page_image_for_ocr(pdf_path, page_index)
+            results = reader.readtext(np.array(img), detail=0, paragraph=True)
+            page_text = "\n".join(results).strip()
+            if page_text:
+                ocr_text += page_text + "\n"
+    except Exception:
+        pass
+
+    return ocr_text.strip()
+
 
 def clean_extracted_text(text: str) -> str:
     if not text:
@@ -92,9 +107,14 @@ def read_pdf(file_path: str) -> str:
     text = clean_extracted_text(text)
 
     if looks_like_broken_arabic(text):
-        print("Broken Arabic PDF detected, but OCR is disabled in deployment.")
+        print("Broken Arabic PDF detected. Falling back to OCR...")
+        ocr_text = extract_text_with_ocr(file_path)
+        ocr_text = clean_extracted_text(ocr_text)
 
-        return text
+        if ocr_text.strip():
+            return ocr_text
+
+    return text
 
 
 def read_docx(file_path: str) -> str:

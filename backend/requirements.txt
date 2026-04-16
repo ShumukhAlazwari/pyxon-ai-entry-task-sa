@@ -6,7 +6,7 @@ pdfplumber
 python-docx
 sentence-transformers
 chromadb
-#easyocr
+easyocr
 Pillow
 numpy
 PyMuPDF
